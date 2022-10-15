@@ -34,8 +34,8 @@ bin, conf, logs ... 등의 디렉토리가 등장한다.
 
 그러면 zookeeper를 설정하고 실행해 보자.
 
-우선 conf 디렉토리를 보자, 그럼 `zoo_sample.cfg` 가 있는 것을 확인할 수 있다. 이 파일을 수정해서 zookeeper를 설정한다. 그렇지만 우리는 localhost 환경에서 zookeeper를 설정할 것이므로
-`zoo_sample.cfg` 파일을 `zoo.cfg` 로 복사해 주면 된다.
+우선 conf 디렉토리를 보자, 그럼 `zoo_sample.cfg` 가 있는 것을 확인할 수 있다. 이 파일을 수정해서 zookeeper를 설정한다. 우리는 localhost 환경에서 zookeeper를 설정할 것이므로
+`zoo_sample.cfg` 파일을 `zoo.cfg` 로 복사 만 하면 된다.
 
 ```bash
 cp zoo_sample.cfg zoo.cfg
@@ -62,6 +62,14 @@ tail -f [log file name] | grep started
 ```
 INFO  [ProcessThread(sid:0 cport:2181)::PrepRequestProcessor@137] - PrepRequestProcessor (sid:0) started, reconfigEnabled=false
 ```
+
+그리고 zookeeper 쉘을 통해서 시작되었는지 확인이 가능하다. bin 디렉토리로 이동한다. 그리고 아래의 명령어를 실행한다.
+
+```bash
+./zkCli.sh
+```
+
+
 
 
 
