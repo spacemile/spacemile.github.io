@@ -4,8 +4,6 @@ date: 2022-10-15
 categories:
 - zookeeper
 tags:
-- kafka
-- data
 - zookeeper
 ---
 
@@ -15,15 +13,15 @@ kafka를 실행하기 위해서는 `zookeeper` 가 필요하다. zookeeper는 ka
 > zookeeper server 1, kafka server 1 대로 구성한다.
 > zookeeper 3.7.1, kafka 3.1.2 환경에서 테스트 되었다.
 
-### Zookeeper 시작
+## Zookeeper 시작
 
-#### 1. 설치
+### 설치
 
 아래의 링크에서 zookeeper를 다운로드 받을 수 있다. 여기선 3.7.1 버전을 다루었다.
 
 https://zookeeper.apache.org/releases.html
 
-#### 2. 설정
+### 설정
 
 zookeeper를 다운로드 받고 압축을 해제 해보자.
 
@@ -41,7 +39,7 @@ bin, conf, logs ... 등의 디렉토리가 등장한다.
 cp zoo_sample.cfg zoo.cfg
 ```
 
-#### 3. 시작
+### 시작
 
 bin 파일에 가서 `zkServer.sh` 를 찾아보자. zookeeper 서버를 실행하는 스크립트다.
 
