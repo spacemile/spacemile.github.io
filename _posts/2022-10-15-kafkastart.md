@@ -7,9 +7,9 @@ tags:
 - kafka
 ---
 
-이번에는 kafka를 zookeeper와 연동해서 실행하는 방법을 소개한다. zookeeper를 사전에 설치하지 않았다면 zookeeper 설치 글을 보고 설치부터 하고 와야한다.
+이번에는 kafka를 zookeeper와 연동해서 실행하는 방법을 소개한다. zookeeper를 사전에 설치하지 않았다면 zookeeper 부터 설치를 해야한다..!
 
-### 카프카 설치 및 시작
+### Kafka 설치 및 시작
 
 #### 1. 설치
 
@@ -112,7 +112,7 @@ bin 디렉토리에서 `kafka-console-producer.sh` 를 사용하면 producer도 
 
 ```
 > hello kafka
->
+> i am spacemile
 ```
 
 전송은 되었는 것 같은데 어디서 확인할 수 있을까? 다음은 consumer 이다.
@@ -122,3 +122,33 @@ bin 디렉토리에서 `kafka-console-producer.sh` 를 사용하면 producer도 
 consumer는 producer가 전송한 로그를 읽어오는데 사용된다.
 
 `kafka-console-consumer.sh` 스크립트를 이용해 보자.
+
+```
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
+```
+
+위와 같이 명령어를 입력했는데 아무 것도 나오지 않는다. 
+
+이유는 consuming 하는 시점이 consumer를 실행 이후의 시점의 데이터를 가져오기 때문이다.
+
+console을 2개 각각 producer, consumer를 띄워두고 producer에서 데이터를 보내면 consumer에 바로 업데이트 되는 것을 확인할 수 있고,
+
+--form-beginning 옵션을 사용해서 처음부터 데이터를 consuming 할 수있다.
+
+```
+./kafka-console-consumer.sh --bootstrap-servocalhost:9092 --topic test --from-beginning
+```
+
+위 명령어를 입력하면 이전에 producing 한 메시지를 확인이 가능하다.
+
+```
+hello kafka
+i am spacemile
+```
+
+
+이로써 Kafka를 설치하고 테스트 할 수 있는 방법을 소개하였다. 
+
+server.properties에 설정해야하는 중요한 값도 매우 많지만 테스트를 위한 값만 설정해 보았다.
+
+또한 producer, consumer, topic에 대한 기본적인 테스트를 진행해 보았고 앞으로 partition, replication ... 등등 공부해야할 내용이 많다.
