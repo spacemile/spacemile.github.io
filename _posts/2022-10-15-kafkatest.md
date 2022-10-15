@@ -69,8 +69,15 @@ INFO  [ProcessThread(sid:0 cport:2181)::PrepRequestProcessor@137] - PrepRequestP
 ./zkCli.sh
 ```
 
+아래처럼 zkCli에서 `ls /` 명령어를 입력해 보자
 
+```
+[zk: localhost:2181(CONNECTED) 0] ls /
+```
 
+그럼 `/` 위치에 `zookeeper`를 확인가능하다.
+
+이렇게 설치를 완료 한다.
 
 
 ### 카프카 설치 및 시작
