@@ -17,13 +17,13 @@ kafka를 실행하기 위해서는 `zookeeper` 가 필요하다. zookeeper는 ka
 
 ### Zookeeper 시작
 
-#### 설치
+#### 1. 설치
 
 아래의 링크에서 zookeeper를 다운로드 받을 수 있다. 여기선 3.7.1 버전을 다루었다.
 
 https://zookeeper.apache.org/releases.html
 
-#### 설정
+#### 2. 설정
 
 zookeeper를 다운로드 받고 압축을 해제 해보자.
 
@@ -41,9 +41,9 @@ bin, conf, logs ... 등의 디렉토리가 등장한다.
 cp zoo_sample.cfg zoo.cfg
 ```
 
-#### 시작
+#### 3. 시작
 
-아까 말한 bin 파일에 가서 `zkServer.sh` 를 찾아보자. zookeeper 서버를 실행하는 스크립트다.
+bin 파일에 가서 `zkServer.sh` 를 찾아보자. zookeeper 서버를 실행하는 스크립트다.
 
 서버의 실행은 아래의 명령어를 통해서 가능하다. zkServer.sh에 config 옵션으로 디렉토리를 지정해 주면 된다. 그리고 마지막에 start, stop 같은 서버 동작 명령을 내려준다.
 
@@ -51,6 +51,17 @@ cp zoo_sample.cfg zoo.cfg
 ./zkServer.sh --config ../conf start
 ```
 
+그리고 아래의 명령어를 통해서 시작되었는지 찾아보자. logs 디렉토리에서 사용한다. grep으로 started 되었는지만 확인하는 명령어다.
+
+```bash
+tail -f [log file name] | grep started
+```
+
+아래의 로그처럼 나왔다면 시작이 된 것 이다.
+
+```
+INFO  [ProcessThread(sid:0 cport:2181)::PrepRequestProcessor@137] - PrepRequestProcessor (sid:0) started, reconfigEnabled=false
+```
 
 
 
