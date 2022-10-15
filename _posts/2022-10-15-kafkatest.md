@@ -1,8 +1,8 @@
 ---
-title: Kafka (Zookeeper) 시작
+title: Zookeeper 시작
 date: 2022-10-15
 categories:
-- kafka
+- zookeeper
 tags:
 - kafka
 - data
@@ -77,13 +77,6 @@ INFO  [ProcessThread(sid:0 cport:2181)::PrepRequestProcessor@137] - PrepRequestP
 
 그럼 `/` 위치에 `zookeeper`를 확인가능하다.
 
-이렇게 설치를 완료 한다.
+log 및 zkCli.sh 를 통해서 zookeeper를 정상적으로 설정 시작이 되었는지 확인해 보았다.
 
 
-### 카프카 설치 및 시작
-
-https://kafka.apache.org/downloads
-
-```
-./kafka-server-start.sh [server.properties]
-```
