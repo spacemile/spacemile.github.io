@@ -9,15 +9,15 @@ tags:
 
 이번에는 kafka를 zookeeper와 연동해서 실행하는 방법을 소개한다. zookeeper를 사전에 설치하지 않았다면 zookeeper 부터 설치를 해야한다..!
 
-### Kafka 설치 및 시작
+## Kafka 설치 및 시작
 
-#### 1. 설치
+### 설치
 
 설치는 아래의 링크에서 가능하다.
 
 https://kafka.apache.org/downloads
 
-#### 2. 설정
+### 설정
 
 다운로드 받은 kafka 압축을 해제하면,
 
@@ -25,7 +25,7 @@ zookeeper와 같이 bin, config ... 등의 디렉토리가 존재한다.
 
 kafka의 서버 세팅은 `config/server.properties` 에서 한다. 
 
-##### listener 설정
+#### listener 설정
 
 kafka를 localhost 환경에서 동작하게 할 것 이므로 listener 설정을 한다.
 
@@ -39,7 +39,7 @@ listeners=PLAINTEXT://localhost:9092
 
 PLAINTEXT는 별도의 인증을 사용하지 않는 프로토콜이며 인증을 사용하기 위해서는 `SASL_PLAINTEXT` 과 같은 프로토콜을 입력해야하지만 다른 추가적인 설정을 해야할 것이 많으므로 다음번에 글을 작성 하겠다.
 
-##### zookeeper.connect 설정
+#### zookeeper.connect 설정
 
 그리고 kafka를 사용하기 위해서 zookeeper를 설치 하였다.
 
@@ -54,7 +54,7 @@ zookeeper.connect=localhost:2181
 2가지 설정을 함으로써 localhost kafka를 사용할 수 있게 되었다.
 
 
-#### 3. 실행
+### 실행
 
 kafka의 bin 디렉토리에 들어가보자. 다양한 스크립트들이 있다.
 
@@ -74,7 +74,29 @@ kafka의 bin 디렉토리에 들어가보자. 다양한 스크립트들이 있�
 INFO [KafkaServer id=0] started (kafka.server.KafkaServer)
 ```
 
-### Topic Test
+#### Zookeeper 연동 테스트
+
+zookeeper와 연동이 되었는지 확인해보고 싶으면 zkCli.sh를 사용하면 된다.
+
+zookeeper의 bin 파일에서 아래의 명령어를 사용한다.
+
+```
+./zkCli.sh
+```
+
+zkCli에 접속을 하였으면 `ls /`명령어를 실행해 본다.
+
+그러면 지난번에는 `zookeeper` 하나만 존재했던 루트에 아래와 같은 여러 항목이 존재하는 것을 확인할 수 있다.
+
+kafka broker가 zookeeper와 연동을 성공한 것이다.
+
+```
+[zk: localhost:2181(CONNECTED) 0] ls /
+[admin, brokers, cluster, config, consumers, controller, controller_epoch, feature, isr_change_notification, latest_producer_id_block, log_dir_event_notification, zookeeper]
+```
+
+
+## Topic
 
 kafka를 설치하고 실행하였으면 간단한 명령어로 동작을 확인할 수 있다.
 
@@ -98,7 +120,7 @@ test
 
 위와 같이 test 토픽이 생성된 것을 확인할 수 있다.
 
-### Producer
+## Producer
 
 bin 디렉토리에서 `kafka-console-producer.sh` 를 사용하면 producer도 테스트가 가능하다.
 
@@ -117,7 +139,7 @@ bin 디렉토리에서 `kafka-console-producer.sh` 를 사용하면 producer도 
 
 전송은 되었는 것 같은데 어디서 확인할 수 있을까? 다음은 consumer 이다.
 
-### Consumer
+## Consumer
 
 consumer는 producer가 전송한 로그를 읽어오는데 사용된다.
 
