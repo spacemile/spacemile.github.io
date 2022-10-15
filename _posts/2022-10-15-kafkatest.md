@@ -37,15 +37,11 @@ bin, conf, logs ... 등의 디렉토리가 등장한다.
 우선 conf 디렉토리를 보자, 그럼 `zoo_sample.cfg` 가 있는 것을 확인할 수 있다. 이 파일을 수정해서 zookeeper를 설정한다. 그렇지만 우리는 localhost 환경에서 zookeeper를 설정할 것이므로
 `zoo_sample.cfg` 파일을 `zoo.cfg` 로 복사해 주면 된다.
 
-아래의 명령어로 간단하게 옮겨보자.
-
 ```bash
 cp zoo_sample.cfg zoo.cfg
 ```
 
 #### 시작
-
-설정을 너무 간단하게 끝냈다. 실행하는 것도 매우 간단하다.
 
 아까 말한 bin 파일에 가서 `zkServer.sh` 를 찾아보자. zookeeper 서버를 실행하는 스크립트다.
 
