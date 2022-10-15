@@ -121,8 +121,4 @@ bin 디렉토리에서 `kafka-console-producer.sh` 를 사용하면 producer도 
 
 consumer는 producer가 전송한 로그를 읽어오는데 사용된다.
 
-`kafka-console-consumer.sh`를 
-consumer는 producer가 전송한 로그를 읽어오는데 사용된다.ㅅㅏ용
-consumer는 producer가 전송한 로그를 읽어오는데 사용된다.
-
-
+`kafka-console-consumer.sh` 스크립트를 이용해 보자.
