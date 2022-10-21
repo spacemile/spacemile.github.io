@@ -68,11 +68,13 @@ Completed updating config for user admin.
 test
 ```
 
-인증을 걸었는데 이상하게도 아무 문제없이 토픽이 생성되고 리스트를 확인할 수 있다..
+인증을 걸었는데 이상하게도 아무 문제없이 토픽이 생성되고 리스트를 확인할 수 있다.
 
 사실 아직 계정 정보만 주키퍼에 등록했을 뿐 카프카에는 아무런 인증 정보를 넣지 않았다.
 
-단일 카프카를 사용하면 server.properties 변경을 위해서 모두 내려야한다.
+그러면 인증 정보를 넣어보자! 브로커 인증 정보는 `server.properties`에서 가능하다.
+
+만약 단일 카프카를 사용하면 server.properties 변경을 위해서 모두 내려야한다.
 
 하지만 3개 이상의 브로커를 사용하면 하나씩 server.properties를 업데이트 해줌으로써 무중단으로 사용이 가능할 것 같다. (해보지는 않았다.)
 
@@ -90,11 +92,11 @@ listener.name.sasl_plaintext.scram-sha-256.sasl.jaas.config=org.apache.kafka.com
    password="admin-secret";
 ```
 
-`listeners` : 기존 PLAINTEXT를 SASL_PLAINTEXT로 사용함으로 인증 프로토콜을 사용한다.
-`sasl.enabled.mechanisms` : SCRAM-SHA-256을 활성화 한다.
-`sasl.mechanism.inter.broker.protocol` : 브로커 통신 메커니즘을 정한다.
-`security.inter.broker.protocol` : 브로커 통신 프로토콜을 정한다.
-`listener.name.sasl_plaintext.scram-sha-256.sasl.jaas.config` : scram login 모듈을 설정한다. 여기서 username,password를 작성해준다.
+- `listeners` : 기존 PLAINTEXT를 SASL_PLAINTEXT로 사용함으로 인증 프로토콜을 사용한다.
+- `sasl.enabled.mechanisms` : SCRAM-SHA-256을 활성화 한다.
+- `sasl.mechanism.inter.broker.protocol` : 브로커 통신 메커니즘을 정한다.
+- `security.inter.broker.protocol` : 브로커 통신 프로토콜을 정한다.
+- `listener.name.sasl_plaintext.scram-sha-256.sasl.jaas.config` : scram login 모듈을 설정한다. 여기서 username,password를 작성해준다.
 
 이렇게 간단하게 server.properties를 작성하면 인증을 작동하는데 준비가 모두 끝났다.
 
