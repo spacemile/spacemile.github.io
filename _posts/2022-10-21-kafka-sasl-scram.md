@@ -26,7 +26,7 @@ SCRAM 방식은 주키퍼에 자격 증명을 저장하여 사용하므로 자�
 만약 카프카를 처음 설정하고, 동작한다면 사전에 계정정보를 주키퍼에 등록할 수 있다. 아래의 __브로커 멈춤 상태에 SCRAM 계정을 등록하는 방법__ 을 이용하고 2번 부터 시작하면 문제 없이 할 수 있다. 
 
 
-1. kafka-configs.sh를 이용한 계정 등록
+### 1. kafka-configs.sh를 이용한 계정 등록
 
 kafka-configs를 통해서 계정 정보를 등록할 수 있다. 아래의 가이드를 참고해 계정을 등록해 보자.
 
@@ -55,7 +55,7 @@ Completed updating config for user admin.
 [admin]
 ```
 
-2. server.properties 설정
+### 2. server.properties 설정
 
 인증도 걸었겠다! 그렇다면 topic을 생성해보자!
 
@@ -99,7 +99,7 @@ listener.name.sasl_plaintext.scram-sha-256.sasl.jaas.config=org.apache.kafka.com
 이렇게 간단하게 server.properties를 작성하면 인증을 작동하는데 준비가 모두 끝났다.
 
 
-3. 테스트
+### 3. 테스트
 
 그리고 위에서 사용했던 topic 리스트를 출력하는 명령을 날리면 아래와 같이 인증이 되지 않은 오류 로그를 볼 수 있다.
 
