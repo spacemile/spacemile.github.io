@@ -19,11 +19,11 @@ SCRAM(Salted Challenge Response Authentication Mechanism)은 `username`과 `pass
 SCRAM 방식은 주키퍼에 자격 증명을 저장하여 사용하므로 자격 증명을 등록하는 과정이 필요로 하다.
 
 
-## 브로커 실행중 SCRAM 계정을 등록하는 방법
+## 브로커를 통한 계정정보 등록
 
-`브로커가 동작중` 계정정보를 등록해야한다면 아래의 방법을 이용해 등록할 수 있다.
+브로커를 통한 계정 정보 등록 방법은 kafka-config.sh 를 사용해 kafka bootstrap-server를 지정하는 방법이다.
 
-만약 카프카를 처음 설정하고, 동작한다면 사전에 계정정보를 주키퍼에 등록할 수 있다. 아래의 __브로커 멈춤 상태에 SCRAM 계정을 등록하는 방법__ 을 이용하고 2번 부터 시작하면 문제 없이 할 수 있다. 
+만약 주키퍼 주소를 통해 등록하고 싶다면, 아래의 __주키퍼에 등록하는 방법__ 스크립트를 적용하면 된다.
 
 
 ### 1. kafka-configs.sh를 이용한 계정 등록
@@ -138,7 +138,7 @@ test
 성공적으로 인증을 걸었다!
 
 
-## 브로커 멈춤 상태에 주키퍼에 등록하는 방법 
+## 주키퍼에 등록하는 방법
 
 ```bash
 ./kafka-configs --zookeeper localhost:2181 --alter --add-config 'SCRAM-SHA-256=[iterations=8192,password=alice-secret],SCRAM-SHA-512=[password=alice-secret]' --entity-type users --entity-name alice
